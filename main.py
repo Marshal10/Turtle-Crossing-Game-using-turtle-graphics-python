@@ -13,41 +13,44 @@ screen.tracer(0)
 screen.listen()
 
 player=Player()
+car_manager=CarManager()
 scoreboard=Scoreboard()
 
 screen.onkeypress(player.move,"Up")
 
+#Spawn some cars first and then start the game
 for i in range(25):
     if i%6==0:
-        cars.append(CarManager())
-car_speed=cars[0].speed        
+        car_manager.create_car()
+       
 game_is_on = True
 
 while game_is_on:
-    time.sleep(car_speed)
+    time.sleep(car_manager.speed)
     screen.update()
     
     #Generate a new car 
     if index%6==0:
-        cars.append(CarManager())  
+        car_manager.create_car()  
     index+=1   
     
     #Move all the cars
-    for car in cars:
-        car.move()
+    for car in car_manager.all_cars:
+       
+        car_manager.move(car)
         #Detect player collision with the cars
         if player.distance(car)<20:
             scoreboard.game_over()
             game_is_on=False
             break
         
-    
+   
     
     #Check if the player has reached the finished line    
     if player.reached_finish_line():
         scoreboard.level_up()
         scoreboard.display_level()
-        car_speed=cars[0].increase_speed()
+        car_manager.increase_speed()
         
         
 
