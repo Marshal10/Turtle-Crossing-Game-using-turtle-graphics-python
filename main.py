@@ -16,24 +16,20 @@ scoreboard=Scoreboard()
 screen.onkeypress(player.move,"Up")
 
 #Spawn some cars first and then start the game
-for i in range(61):
-    if i%6==0:
-        car_manager.starter_cars()
+car_manager.starter_cars()
       
-index=0      
+      
 game_is_on = True
 while game_is_on:
     time.sleep(car_manager.speed)
     screen.update()
     
     #Generate a new car 
-    if index%6==0:
-        car_manager.create_car()  
-    index+=1   
+    car_manager.create_car()  
+     
     
     #Move all the cars
     for car in car_manager.all_cars:
-       
         car_manager.move(car)
         #Detect player collision with the cars
         if player.distance(car)<20:
