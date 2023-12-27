@@ -10,6 +10,7 @@ screen.tracer(0)
 screen.listen()
 
 player=Player()
+scoreboard=Scoreboard()
 index=0
 screen.onkeypress(player.move,"Up")
 for i in range(25):
@@ -24,6 +25,7 @@ while game_is_on:
     index+=1    
     for car in cars:
         car.move()
+    player.reached_finish_line()    
         
 
 screen.exitonclick()
