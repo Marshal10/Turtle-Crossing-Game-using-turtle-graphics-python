@@ -19,3 +19,4 @@ class Player(Turtle):
     def reached_finish_line(self):
         if self.ycor()>FINISH_LINE_Y:
             self.goto(STARTING_POSITION)
+            return True
