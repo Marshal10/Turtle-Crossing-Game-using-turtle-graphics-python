@@ -22,6 +22,17 @@ class CarManager():
         new_car.goto(random_x,random_y) 
         self.all_cars.append(new_car)
         
+    def starter_cars(self):
+        random_y=randint(-250,250)
+        random_x=randint(-300,300)
+        new_car=Turtle("square")
+        new_car.penup()
+        new_car.shapesize(stretch_wid=1, stretch_len=2)
+        new_car.color(choice(COLORS))
+        new_car.setheading(180)
+        new_car.goto(random_x,random_y)
+        self.all_cars.append(new_car)
+        
         
     def move(self,car):
         car.forward(STARTING_MOVE_DISTANCE)

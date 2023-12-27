@@ -4,7 +4,6 @@ from player import Player
 from car_manager import CarManager
 from scoreboard import Scoreboard
 
-cars=[]
 index=0
 
 screen = Screen()
@@ -19,12 +18,12 @@ scoreboard=Scoreboard()
 screen.onkeypress(player.move,"Up")
 
 #Spawn some cars first and then start the game
-for i in range(25):
+for i in range(61):
     if i%6==0:
-        car_manager.create_car()
-       
+        car_manager.starter_cars()
+      
+      
 game_is_on = True
-
 while game_is_on:
     time.sleep(car_manager.speed)
     screen.update()
