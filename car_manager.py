@@ -39,8 +39,9 @@ class CarManager():
                 self.all_cars.append(new_car)
         
         
-    def move(self,car):
-        car.forward(STARTING_MOVE_DISTANCE)
+    def move(self):
+        for car in self.all_cars:
+            car.forward(STARTING_MOVE_DISTANCE)
         
     def increase_speed(self):
         self.speed*=MOVE_INCREMENT
